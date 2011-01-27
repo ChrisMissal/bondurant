@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bondurant", "Bondurant\Bondurant.csproj", "{16AC7197-AE2A-4611-8906-983D833211AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSite", "TestSite\TestSite.csproj", "{6244EFED-779C-4EF8-AC19-6B1959EF2BB3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bondurant.Tests", "Bondurant.Tests\Bondurant.Tests.csproj", "{602B0538-28BE-4BC6-8C21-E0B3509EFF2E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{16AC7197-AE2A-4611-8906-983D833211AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16AC7197-AE2A-4611-8906-983D833211AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16AC7197-AE2A-4611-8906-983D833211AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16AC7197-AE2A-4611-8906-983D833211AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6244EFED-779C-4EF8-AC19-6B1959EF2BB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6244EFED-779C-4EF8-AC19-6B1959EF2BB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6244EFED-779C-4EF8-AC19-6B1959EF2BB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6244EFED-779C-4EF8-AC19-6B1959EF2BB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{602B0538-28BE-4BC6-8C21-E0B3509EFF2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{602B0538-28BE-4BC6-8C21-E0B3509EFF2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{602B0538-28BE-4BC6-8C21-E0B3509EFF2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{602B0538-28BE-4BC6-8C21-E0B3509EFF2E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
