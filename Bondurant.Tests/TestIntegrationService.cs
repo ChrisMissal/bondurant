@@ -11,9 +11,9 @@ namespace Bondurant.Tests
         {
         }
 
-        public new void AddScript(TagBuilder tagBuilder)
+        public new void AddClient<T>(IClient client, Func<T, string> tagFactory) where T : class, IClient
         {
-            base.AddScript(tagBuilder);
+            base.AddClient(client, tagFactory);
         }
 
         public new void NotifyAll<T>(Action<T> action) where T : IClient

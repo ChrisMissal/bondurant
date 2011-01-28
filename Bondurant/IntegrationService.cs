@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web.Mvc;
 
 namespace Bondurant
@@ -16,31 +17,45 @@ namespace Bondurant
             this.clients = clients;
         }
 
-        public IEnumerable<IClient> Clients
+        protected void AddClient<T>(IClient client, Func<T, string> tagFactory) where T : class, IClient
         {
-            get { return clients; }
-        }
+            var tagBuilder = client.CreateTag(tagFactory);
 
-        protected void AddScript(TagBuilder tagBuilder)
-        {
             if (tagBuilder.InnerHtml.IsNullOrWhitespace())
                 return;
+
+            client.Prerequisites.ForEach(tagBuilderInjector.AddPrerequisite);
 
             tagBuilderInjector.Inject(tagBuilder);
         }
 
         protected void NotifyAll<T>(Action<T> action) where T : IClient
         {
-            Clients.OfType<T>().ForEach(action);
+            clients.OfType<T>().ForEach(action);
         }
 
-        public virtual TagBuilder TagBlock(string tagName)
+        public virtual string ScriptBlock()
         {
-            var allInnerHtml = from tagBuilder in tagBuilderInjector
-                               where tagBuilder.TagName == tagName
+            var builders = tagBuilderInjector.ToArray();
+
+            var prereqs = from tagBuilder in builders
+                          where tagBuilder.Type == TagBuilder.TagType.Prerequisite
+                          select tagBuilder;
+
+            var allInnerHtml = from tagBuilder in builders
+                               where tagBuilder.Type == TagBuilder.TagType.Grouped
                                select tagBuilder.InnerHtml;
 
-            return new TagBuilder(tagName) { InnerHtml = allInnerHtml.Join() };
+            var groupedTagBuilder = new TagBuilder("script")
+                .WithInnerHtml(Environment.NewLine + allInnerHtml.Join())
+                .WithAttribute("type", "text/javascript");
+
+            var builder = new StringBuilder();
+
+            prereqs.ForEach(pr => builder.AppendLine(pr.ToString(TagRenderMode.Normal)));
+            builder.AppendLine(groupedTagBuilder.ToString(TagRenderMode.Normal));
+
+            return builder.ToString();
         }
     }
 }

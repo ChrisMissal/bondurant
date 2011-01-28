@@ -43,6 +43,8 @@
     <Compile Include="IClient.cs" />
     <Compile Include="IntegrationService.cs" />
     <Compile Include="ITagBuilderInjector.cs" />
+    <Compile Include="JQueryClient.cs" />
+    <Compile Include="TagBuilder.cs" />
     <Compile Include="TagBuilderInjector.cs" />
     <Compile Include="TagBuilderClient.cs" />
   </ItemGroup>

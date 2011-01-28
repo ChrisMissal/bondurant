@@ -2,13 +2,30 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
-using System.Web.Mvc;
 
 namespace Bondurant
 {
     [DebuggerStepThrough]
     public static class Extensions
     {
+        public static TagBuilder WithInnerHtml(this TagBuilder @this, string innerHtml)
+        {
+            @this.InnerHtml = innerHtml;
+            return @this;
+        }
+
+        public static TagBuilder WithAttribute(this TagBuilder @this, string key, string value)
+        {
+            @this.Attributes.Add(key, value);
+            return @this;
+        }
+
+        public static TagBuilder WrapInnerHtml(this TagBuilder @this, string front, string back)
+        {
+            @this.InnerHtml = front + @this.InnerHtml + back;
+            return @this;
+        }
+
         public static void ForEach<T>(this IEnumerable<T> @this, Action<T> action)
         {
             foreach (var item in @this)
@@ -25,12 +42,6 @@ namespace Bondurant
         public static bool IsNullOrWhitespace(this string @this)
         {
             return string.IsNullOrWhiteSpace(@this);
-        }
-
-        public static TagBuilder WithInnerHtml(this TagBuilder @this, string innerHtml)
-        {
-            @this.InnerHtml = innerHtml;
-            return @this;
         }
     }
 }

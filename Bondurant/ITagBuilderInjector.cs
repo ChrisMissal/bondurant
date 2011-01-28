@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
-using System.Web.Mvc;
 
 namespace Bondurant
 {
     public interface ITagBuilderInjector : IEnumerable<TagBuilder>
     {
-        int Count { get; }
+        void AddPrerequisite(TagBuilder tagBuilder);
+        int PrerequisiteCount { get; }
+        int TagCount { get; }
         void Inject(TagBuilder tagBuilder);
     }
 }

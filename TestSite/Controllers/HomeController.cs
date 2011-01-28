@@ -18,10 +18,22 @@ namespace TestSite.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
+        public ActionResult Message()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Message(string message)
+        {
+            integrationService.MessageQueued(message);
+            return RedirectToAction("Index");
+        }
+
         public ContentResult Scripts()
         {
-            var scripts = integrationService.TagBlock("script");
-            return Content(scripts.ToString(TagRenderMode.Normal));
+            return Content(integrationService.ScriptBlock());
         }
     }
 }

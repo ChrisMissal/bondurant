@@ -65,6 +65,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clients\MessagingClient.cs" />
     <Compile Include="Clients\PageViewClient.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\WebIntegrationService.cs" />
@@ -75,7 +76,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Scripts\messaging.js" />
     <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Home\Message.aspx" />
+    <Content Include="Views\Shared\Links.ascx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -89,7 +93,6 @@
   <ItemGroup>
     <Folder Include="Content\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bondurant\Bondurant.csproj">
