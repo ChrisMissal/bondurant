@@ -10,9 +10,9 @@ namespace Bondurant
 
         public IEnumerator<TagBuilder> GetEnumerator()
         {
-            while (prerequisites.Count > 0)
+            while (Prerequisites.Count > 0)
             {
-                var tagBuilder = prerequisites.Dequeue();
+                var tagBuilder = Prerequisites.Dequeue();
                 tagBuilder.Type = TagBuilder.TagType.Prerequisite;
                 yield return tagBuilder;
             }
@@ -36,10 +36,10 @@ namespace Bondurant
 
         public void AddPrerequisite(TagBuilder tagBuilder)
         {
-            if (prerequisites.Contains(tagBuilder))
+            if (Prerequisites.Contains(tagBuilder))
                 return;
 
-            prerequisites.Enqueue(tagBuilder);
+            Prerequisites.Enqueue(tagBuilder);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -52,9 +52,14 @@ namespace Bondurant
             get { return queue; }
         }
 
+        protected virtual Queue<TagBuilder> Prerequisites
+        {
+            get { return prerequisites; }
+        }
+
         public int PrerequisiteCount
         {
-            get { return prerequisites.Count; }
+            get { return Prerequisites.Count; }
         }
     }
 }
